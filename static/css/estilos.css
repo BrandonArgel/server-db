@@ -1,0 +1,208 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    @font-face {
+        font-family: "CormorantGaramond";
+        src: url(../font/CormorantGaramond);
+    }
+}
+
+.navbar 
+{
+    background-color: #000000cc;
+}
+
+.navbar .navbar
+{
+    background-color: #00000000;
+}
+
+body
+{
+    font-family: "CormorantGaramond", Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+.contenedor
+{
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+    overflow: hidden;
+}
+
+header
+{
+    width: 100%;
+    background-image: url(../img/fondo.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    position: center, 0;
+}
+
+header .contenedor
+{
+    position: relative;
+    height: 700px;
+}
+
+.brand-plants .navbar-brand {color: greenyellow;}
+.brand-plants .navbar-brand:hover {color: rgba(172, 255, 47, 0.699);}
+.brand-plants .navbar-nav .nav-link {color: greenyellow;}
+.brand-plants .navbar-nav .nav-link:hover {color: rgba(172, 255, 47, 0.699);}
+
+header .titulos
+{
+    width: 100%;
+    color: white;
+    position: absolute;
+    top: 15%;
+}
+
+header .titulos .nombre
+{
+    font-size: 60px;
+    font-weight: 1000px;
+}
+
+header .titulos .nombre span
+{
+    font-weight: 300px;
+}
+
+header .titulos h3
+{
+    font-size: 25px;
+    font-weight: 300px;
+    font-style: italic;
+}
+
+.secciones
+{
+    background-image: url(../img/leaves.png);
+    background-repeat: repeat;
+}
+
+.secciones .acerca_de .contenedor{
+    overflow: visible;
+    position: relative;
+}
+.secciones .acerca_de .foto {
+    width: 85%;
+    position: absolute;
+    left: 0;
+    top: 120px;
+    z-index: 0;
+    box-shadow: 0px 0px 10px 3px rgba(0,0,0,.75);
+}
+.secciones .acerca_de .foto img {
+    top: -100;
+    vertical-align: top;
+    width: 100%;
+}
+.secciones .acerca_de article {
+    background-color: #fff;
+    padding: 40px;
+    width: 50%;
+    position: relative;
+    top: 200px;
+    z-index: 1;
+    float: right;
+    box-shadow: 0px 0px 10px 3px rgba(0,0,0,.75);
+}
+.secciones .acerca_de article h3 {
+    font-size: 50px;
+    font-weight: 300;
+    margin-bottom: 40px;
+}
+.secciones .acerca_de article p {
+    line-height: 30px;
+    margin-bottom: 15px;
+}
+
+.secciones .contenedor 
+{
+    padding-top: 310px;
+    padding-bottom: 200px;
+} 
+
+.tipos_de_plantas .foto
+{
+    margin: 0px;
+}
+
+section .novedades .contenedor .card
+{
+    background-color: #000000ff;
+    color: greenyellow;
+}
+
+.secciones .tipos_de_plantas
+{
+    overflow-y: hidden;
+}
+
+.secciones .tipos_de_plantas .foto
+{
+    width: 25%;
+    float: left;
+}
+
+.secciones .tipos_de_plantas .foto img
+{
+    width: 100%;
+    vertical-align: top;
+    opacity: .7;
+}
+
+.secciones .tipos_de_plantas .foto:hover
+{
+    opacity: .8;
+    transition: all 3 ease;
+}
+
+.secciones .ubicacion
+{
+    background-color: white;
+    padding-top: 60px;
+}
+
+.secciones .ubicacion .titulo
+{
+    text-align: center;
+    font-size: 40px;
+    line-height: 40px;
+    font-weight: 300;
+    margin-bottom: 40px;
+}
+
+.secciones .ubicacion .direccion
+{
+    float: left;
+    width: 300px;
+    text-align: left;
+}
+
+.secciones .ubicacion .horario
+{
+    float: right;
+    width: 300px;
+    text-align: end;
+}
+
+footer
+{
+    background-color: black;
+}
+
+footer .copyright
+{
+    padding: 50px 0px;
+    text-align: center;
+    color: seashell;
+}
+

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %} {% endblock %}</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename = 'img/spa.svg')}}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/all.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/estilos.css')}}">
+</head>
+
+<body>
+    {% block contenido %} {% endblock %}
+
+    <footer>
+        <div class="contenedor">
+            <div class="copyright">
+                <p>Todos los derechos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+    <script src="{{ url_for('static', filename = 'js/jquery-3.5.1.min.js')}}"></script>
+    <script src="{{ url_for('static', filename = 'js/bootstrap.min.js')}}"></script>
+    <script src="{{ url_for('static', filename = 'js/popper.min.js')}}"></script>
+    <script src="{{ url_for('static', filename = 'js/all.min.js')}}"></script>
+    <script src="{{ url_for('static', filename = 'js/scrollreveal.min.js')}}"></script>
+    <script src="{{ url_for('static', filename = 'js/efectos.js')}}"></script>
+</body>
+
+</html>
