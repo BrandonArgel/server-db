@@ -206,3 +206,14 @@ footer .copyright
     color: seashell;
 }
 
+header .ingresar
+{
+    position: absolute;
+    top: 30%;
+}
+
+.ingresar .card
+{
+    background-color: #000000cc;
+    color: yellowgreen;
+}

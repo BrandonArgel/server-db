@@ -1,0 +1,128 @@
+{% extends 'layout.html' %}
+{% block titulo %} Inicia Sesión para continuar {% endblock %}
+{% block contenido %}
+<header>
+    <nav id="navbar" class="navbar brand-plants navbar-expand-lg navbar-light">
+        <div class="btn-nombre navbar">
+            &nbsp;&nbsp; <a class="navbar-brand" href="#"><i class="fab fa-pagelines"></i>&nbsp;&nbsp;Brand Plants</a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="btn-home nav-link" href="/"><i class="fas fa-home"></i>&nbsp;Home&nbsp;&nbsp;<span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn-tipos nav-link" href="#" id="btn_tipos_de_plantas"><i
+                            class="fas fa-spa"></i>&nbsp;Tipos de plantas</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="login">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 d-none d-block ">
+                    <div class="contenedor">
+                        <div class="titulos">
+                            <h1 class="nombre">Brand Plants <span>Plants Brand</span></h1>
+                            <h3 class="eslogan">Las plantas más bonitas de la ciudad</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="container">
+                        <div class="ingresar">
+                            <div class="card">
+                                <div class="card-body ">
+                                    <h3><strong>Iniciar sesión</strong></h3>
+                                    <p>Lorem, ipsum dolor.</p>
+                                    <form action="">
+                                        <div class="form-grop">
+                                            <input type="email" name="correo" placeholder="Correo Electrónico"
+                                                class="form-control form-control-lg">
+                                            <div class="form-group">
+                                                <input type="password" name="clave" placeholder="Contraseña"
+                                                    class="form-control form-control-lg">
+                                            </div>
+                                        </div>
+                                        <input type="submit" value="Iniciar sesión"
+                                            class="btn btn-outline-light btn-block">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</header>
+<section class="novedades">
+    <div class="contenedor">
+        <div class="card-deck">
+            <div class="card">
+                <img src="{{ url_for('static', filename = 'img/img1.png')}}" class="card-img-top" alt="planta">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                        additional content. This content is a little bit longer.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="{{ url_for('static', filename = 'img/img2.png')}}" class="card-img-top" alt="planta">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.
+                    </p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="{{ url_for('static', filename = 'img/img3.png')}}" class="card-img-top" alt="planta">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                        additional content. This card has even longer content than the first to show that equal height
+                        action.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="tipos_de_plantas" id="tipos_de_plantas">
+    <div><img src="{{ url_for('static', filename = 'img/img1.png')}}" class="foto" alt="foto"></div>
+    <div><img src="{{ url_for('static', filename = 'img/img2.png')}}" class="foto" alt="foto"></div>
+    <div><img src="{{ url_for('static', filename = 'img/img3.png')}}" class="foto" alt="foto"></div>
+    <div><img src="{{ url_for('static', filename = 'img/img4.png')}}" class="foto" alt="foto"></div>
+    <div><img src="{{ url_for('static', filename = 'img/img5.png')}}" class="foto" alt="foto"></div>
+    <div><img src="{{ url_for('static', filename = 'img/img6.png')}}" class="foto" alt="foto"></div>
+    <div><img src="{{ url_for('static', filename = 'img/img7.png')}}" class="foto" alt="foto"></div>
+    <div><img src="{{ url_for('static', filename = 'img/img8.png')}}" class="foto" alt="foto"></div>
+</section> <br />
+<section class="ubicacion">
+    <h3 class="titulo">Ubicacion</h3>
+    <div class="contenedor">
+        <p class="direccion">Calle Municipal 982, Jardines de Tabachines, 45188 Zapopan, Jal.</p>
+        <p class="horario">De Lunes a Viernes: 8:00–20:00</p>
+    </div>
+</section>
+<section class="mapa">
+    <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2442.8726412233837!2d-103.37046880017816!3d20.73745770814063!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428afe7d4032233%3A0xf32bb69f97eda825!2sVIVERO%20LOS%20POTRILLOS!5e0!3m2!1ses-419!2smx!4v1602100189467!5m2!1ses-419!2smx"
+        width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
+        tabindex="0"></iframe>
+</section>
+</section>
+{% endblock %}

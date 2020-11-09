@@ -4,6 +4,11 @@ brandplantsApp = Flask(__name__)
 def index():
     return render_template('inicio.html')
     
+@brandplantsApp.route('/login')
+def login():
+    return render_template('login.html')
+
 if __name__ == '__main__':
     brandplantsApp.secret_key = 'aaaaeeee'
     brandplantsApp.run(port = 3000,debug = True)
+
