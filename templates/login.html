@@ -17,8 +17,7 @@
                             class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn-tipos nav-link" href="#" id="btn_tipos_de_plantas"><i
-                            class="fas fa-spa"></i>&nbsp;Tipos de plantas</a>
+                    <a class="btn-tipos nav-link" href="#" id="btn_tipos_de_plantas"><i class="fas fa-spa"></i>&nbsp;Tipos de plantas</a>
                 </li>
             </ul>
         </div>
@@ -51,8 +50,16 @@
                                                     class="form-control form-control-lg">
                                             </div>
                                         </div>
-                                        <input type="submit" value="Iniciar sesión"
-                                            class="btn btn-outline-light btn-block">
+                                        <div class="form-group">
+                                            <input type="submit" value="Iniciar sesión"
+                                                class="btn btn-outline-light btn-block">
+                                        </div>
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-primary btn-outline-light btn-block" data-toggle="modal"
+                                            data-target="#staticBackdrop">
+                                            Registrate aquí
+                                        </button>
+
                                     </form>
                                 </div>
                             </div>
@@ -66,6 +73,43 @@
 
 
 </header>
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <form action="/registro" method="POST">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Registro</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="nombrec">Nombre:</label>
+                        <input type="text" name="nombrec" placeholder="Nombre completo" class="form-control">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="correoc">Correo:</label>
+                            <input type="email" name="correoc" placeholder="Correo Electrónico" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="clavec">Contraseña:</label>
+                            <input type="password" class="form-control" name="clavec" placeholder="Contraseña" >
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Registrarse</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <section class="novedades">
     <div class="contenedor">
         <div class="card-deck">
@@ -119,8 +163,7 @@
     </div>
 </section>
 <section class="mapa">
-    <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2442.8726412233837!2d-103.37046880017816!3d20.73745770814063!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428afe7d4032233%3A0xf32bb69f97eda825!2sVIVERO%20LOS%20POTRILLOS!5e0!3m2!1ses-419!2smx!4v1602100189467!5m2!1ses-419!2smx"
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2442.8726412233837!2d-103.37046880017816!3d20.73745770814063!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428afe7d4032233%3A0xf32bb69f97eda825!2sVIVERO%20LOS%20POTRILLOS!5e0!3m2!1ses-419!2smx!4v1602100189467!5m2!1ses-419!2smx"
         width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
         tabindex="0"></iframe>
 </section>
