@@ -5,7 +5,7 @@ brandplantsApp = Flask(__name__)
 brandplantsApp.config['MYSQL_HOST'] = 'localhost'
 brandplantsApp.config['MYSQL_USER'] = 'root'
 brandplantsApp.config['MYSQL_PASSWORD'] = 'mysql'
-brandplantsApp.config['MYSQL_DB'] = 'brandplants.sql'
+brandplantsApp.config['MYSQL_DB'] = 'plantsbrand'
 brandplantsApp.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 mysql = MySQL(brandplantsApp)
 @brandplantsApp.route('/')

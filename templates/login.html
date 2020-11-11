@@ -4,7 +4,7 @@
 <header>
     <nav id="navbar" class="navbar brand-plants navbar-expand-lg navbar-light">
         <div class="btn-nombre navbar">
-            &nbsp;&nbsp; <a class="navbar-brand" href="#"><i class="fab fa-pagelines"></i>&nbsp;&nbsp;Brand Plants</a>
+            &nbsp;&nbsp; <a class="navbar-brand" href="#"><em class="fab fa-pagelines"></em>&nbsp;&nbsp;Brand Plants</a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,11 +13,12 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="btn-home nav-link" href="/"><i class="fas fa-home"></i>&nbsp;Home&nbsp;&nbsp;<span
+                    <a class="btn-home nav-link" href="/"><em class="fas fa-home"></em>&nbsp;Home&nbsp;&nbsp;<span
                             class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn-tipos nav-link" href="#" id="btn_tipos_de_plantas"><i class="fas fa-spa"></i>&nbsp;Tipos de plantas</a>
+                    <a class="btn-tipos nav-link" href="#" id="btn_tipos_de_plantas"><em
+                            class="fas fa-spa"></em>&nbsp;Tipos de plantas</a>
                 </li>
             </ul>
         </div>
@@ -42,21 +43,22 @@
                                     <h3><strong>Iniciar sesión</strong></h3>
                                     <p>Lorem, ipsum dolor.</p>
                                     <form action="">
-                                        <div class="form-grop">
+                                        <div class="form-group">
                                             <input type="email" name="correo" placeholder="Correo Electrónico"
                                                 class="form-control form-control-lg">
+                                            </div>
                                             <div class="form-group">
                                                 <input type="password" name="clave" placeholder="Contraseña"
                                                     class="form-control form-control-lg">
-                                            </div>
+                                            
                                         </div>
                                         <div class="form-group">
                                             <input type="submit" value="Iniciar sesión"
                                                 class="btn btn-outline-light btn-block">
                                         </div>
                                         <!-- Button trigger modal -->
-                                        <button type="button" class="btn btn-primary btn-outline-light btn-block" data-toggle="modal"
-                                            data-target="#staticBackdrop">
+                                        <button type="button" class="btn btn-primary btn-outline-light btn-block"
+                                            data-toggle="modal" data-target="#staticBackdrop">
                                             Registrate aquí
                                         </button>
                                     </form>
@@ -96,13 +98,13 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="clavec">Contraseña:</label>
-                            <input type="password" class="form-control" name="clavec" placeholder="Contraseña" >
+                            <input type="password" class="form-control" name="clavec" placeholder="Contraseña">
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Registrarse</button>
+                    <button type="submit" class="btn btn-primary">Registrarse</button>
                 </div>
             </form>
         </div>
@@ -162,9 +164,10 @@
     </div>
 </section>
 <section class="mapa">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2442.8726412233837!2d-103.37046880017816!3d20.73745770814063!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428afe7d4032233%3A0xf32bb69f97eda825!2sVIVERO%20LOS%20POTRILLOS!5e0!3m2!1ses-419!2smx!4v1602100189467!5m2!1ses-419!2smx"
+    <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2442.8726412233837!2d-103.37046880017816!3d20.73745770814063!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428afe7d4032233%3A0xf32bb69f97eda825!2sVIVERO%20LOS%20POTRILLOS!5e0!3m2!1ses-419!2smx!4v1602100189467!5m2!1ses-419!2smx"
         width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
-        tabindex="0"></iframe>
+        tabindex="0" title="maps"></iframe>
 </section>
 </section>
 {% endblock %}
