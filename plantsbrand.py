@@ -1,13 +1,13 @@
-from flask import Flask, render_template, request, url_for
-# from flask_mysqldb import MySQL, MySQLdb
-# from flask_bcrypt import bcrypt 
+from flask import Flask, render_template, request, url_for, redirect
+from flask_mysqldb import MySQL, MySQLdb
+from flask_bcrypt import bcrypt
 brandplantsApp = Flask(__name__)
 brandplantsApp.config['MYSQL_HOST'] = 'localhost'
 brandplantsApp.config['MYSQL_USER'] = 'root'
 brandplantsApp.config['MYSQL_PASSWORD'] = 'mysql'
 brandplantsApp.config['MYSQL_DB'] = 'brandplants.sql'
 brandplantsApp.config['MYSQL_CURSORCLASS'] = 'DictCursor'
-# mysql = MySQL(brandplantsApp)
+mysql = MySQL(brandplantsApp)
 @brandplantsApp.route('/')
 def index():
     return render_template('inicio.html')
@@ -22,9 +22,9 @@ def registro():
         nombrec = request.form['nombrec']
         correoc = request.form['correoc']
         clavec = request.form['clavec'].encode('utf-8')
-        claveCifrada = bcrypt.hashpw(clavec, bcrypt.gensalt())
-        regCliente = mysql.connection.cursor()
-        regCliente.execute("INSERT INTO cliente (nombrec, correoc, clavec) VALUES (%s, %s, %s)", (nombrec, correoc, claveCifrada))
+        clavecifrada = bcrypt.hashpw(clavec, bcrypt.gensalt())
+        regcliente = mysql.connection.cursor()
+        regcliente.execute("INSERT INTO cliente (nombrec, correoc, clavec) VALUES (%s, %s, %s)", (nombrec, correoc, clavecifrada))
         mysql.connection.commit()
     return redirect(url_for('index'))
 
