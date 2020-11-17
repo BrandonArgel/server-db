@@ -41,8 +41,17 @@
                             <div class="card">
                                 <div class="card-body ">
                                     <h3><strong>Iniciar sesión</strong></h3>
-                                    <p>Lorem, ipsum dolor.</p>
-                                    <form action="">
+                                    <p>¡Únete a nuestra gran comunidad!</p>
+                                    {% with mensajes = get_flashed_messages() %}
+                                    {% if mensajes %}
+                                        {% for msj in mensajes %}
+                                        <div class="alert alert-danger" role="alert">
+                                            {{ msj }}
+                                        </div>
+                                        {% endfor %}
+                                        {% endif %}
+                                        {% endwith %}
+                                    <form action="/login" method="POST">
                                         <div class="form-group">
                                             <input type="email" name="correo" placeholder="Correo Electrónico"
                                                 class="form-control form-control-lg">
