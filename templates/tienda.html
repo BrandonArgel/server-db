@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+{% block titulo %} Tienda {% endblock %}
+{% block contenido %}
+<header>
+    <nav id="navbar" class="navbar brand-plants navbar-expand-lg navbar-light">
+        <div class="btn-nombre navbar">
+            &nbsp;&nbsp; <a class="navbar-brand" href="#" ><em class="fab fa-pagelines"></em>&nbsp;&nbsp;Brand Plants</a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="btn-home nav-link" href="/cliente"><em class="fas fa-home"></em>&nbsp;Home&nbsp;&nbsp;<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a  class="btn-tienda nav-link" href="#" id="btn_tienda"><em class="fas fa-address-card"></em>&nbsp;&nbsp;Tienda&nbsp;&nbsp;</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout" >&nbsp;<em class="fas fa-sign-out-alt"></em>&nbsp;{{session['nombrec']}}</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<section>
+<div class="row row-cols-1 row-cols-md-3">
+    {% for p in productos %}
+    <div class="col mb-4">
+      <div class="card h-100">
+        <img src="static/img/{{p.imagenp}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{p.nombrep}}</h5>  
+          <h6 class="card-title">{{p.tipop}}</h6>
+          <p class="card-text">{{p.descripcionp}}</p>
+          <p class="card-text">{{p.preciop}}</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+  {% endblock %}

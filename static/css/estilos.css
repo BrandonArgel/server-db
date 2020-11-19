@@ -217,3 +217,13 @@ header .ingresar
     background-color: #000000cc;
     color: yellowgreen;
 }
+
+#navbar-cliente
+{
+    background-color: #000000;
+}
+
+#navbar-cliente #navbar-cliente
+{
+    background-color: #00000000;
+}

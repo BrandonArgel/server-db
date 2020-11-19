@@ -37,6 +37,18 @@ def login():
     else:       
         return render_template('login.html')
 
+@brandplantsApp.route('/logout', methods = ['GET', 'POST'])
+def logout():
+    session.clear()
+    return redirect(url_for('index'))
+
+@brandplantsApp.route('/cliente', methods = ['GET', 'POST'])
+def cliente():
+    return render_template('cliente.html')
+
+
+
+
 @brandplantsApp.route('/registro', methods = ['GET', 'POST'])
 def registro():
     if request.method == 'POST':
