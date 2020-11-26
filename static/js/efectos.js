@@ -5,6 +5,7 @@ sr.reveal('.btn-acerca',{duration:1400, origin:'top',distance:'300px', opacity:0
 sr.reveal('.btn-tipos',{duration:1400, origin:'top',distance:'300px', opacity:0.0});
 sr.reveal('.btn-tienda',{duration:1400, origin:'top',distance:'300px', opacity:0.0});
 sr.reveal('.btn-logout',{duration:1400, origin:'top',distance:'300px', opacity:0.0});
+sr.reveal('.btn-operaciones',{duration:1400, origin:'top',distance:'300px', opacity:0.0});
 sr.reveal('.nombre',{duration:1400, origin:'top',distance:'300px', opacity:0.0, delay:450});
 sr.reveal('.eslogan',{duration:1400, origin:'bottom',distance:'300px', opacity:0.0, delay:450});
 sr.reveal('.ingresar',{duration:1400, origin:'right',distance:'300px', opacity:0.0, delay:450});

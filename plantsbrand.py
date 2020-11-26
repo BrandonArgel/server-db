@@ -32,8 +32,22 @@ def login():
                 flash('Contraseña incorrecta')
                 return redirect(request.url)
         else:
-            flash('Usuario inexistente')
-            return redirect(request.url)
+            correou = request.form['correo']
+            claveu = request.form['clave'].encode('utf-8')
+            selusuario = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+            selusuario.execute("SELECT * FROM usuario WHERE correou = %s", (correou,))
+            u = selusuario.fetchone()
+            if u is not None:
+                if bcrypt.hashpw(claveu, u['claveu'].encode('utf-8')) == u['claveu'].encode('utf-8'):
+                    session['nombreu'] = u['nombreu']
+                    session['correou'] = u['correou']
+                    return render_template('usuario.html')
+                else:
+                    flash('Contraseña incorrecta')
+                    return redirect(request.url)
+            else:
+                flash('Usuario inexistente')
+                return redirect(request.url)
     else:       
         return render_template('login.html')
 
@@ -46,7 +60,12 @@ def logout():
 def cliente():
     return render_template('cliente.html')
 
-
+@brandplantsApp.route('/tienda', methods = ['GET', 'POST'])
+def tienda():
+    selproducto = mysql.connection.cursor()
+    selproducto.execute("SELECT * FROM producto")
+    p = selproducto.fetchall()
+    return render_template('tienda.html', productos = p)
 
 
 @brandplantsApp.route('/registro', methods = ['GET', 'POST'])
@@ -60,6 +79,13 @@ def registro():
         regcliente.execute("INSERT INTO cliente (nombrec, correoc, clavec) VALUES (%s, %s, %s)", (nombrec, correoc, clavecifrada))
         mysql.connection.commit()
     return redirect(url_for('index'))
+
+@brandplantsApp.route('/sCliente', methods =['GET', 'POST'])
+def sCliente():
+    selCliente = mysql.connection.cursor()
+    selCliente.execute("SELECT * FROM cliente")
+    c = selCliente.fetchall()
+    return render_template('ucliente.html', clientes = c)
 
 if __name__ == '__main__':
     brandplantsApp.secret_key = 'aaaaeeee'

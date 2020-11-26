@@ -1,10 +1,10 @@
-1;Abelia;Planta;abelia.jpg;Abelia looks best when allowed to retain its natural shape and size.;$20
-2;Acalypha;Planta;acalypha.jpg;Acalypha is a large genus of about 430 species of shrubs, trees, and annuals from tropical and subtropical regions.;$20
-3;Basil;Planta;basil.jpg;Pinch off the central stem when plants are 4 to 6 inches tall to encourage branching.;$20
-4;Begonia;Planta;begonia.jpg;Tuberous begonias will naturally die back each year.;$20
-5;Cactus;Planta;cactus.jpg;Cacti are low maintenance, water wise plants that store water in their leaves, stems or roots, creating a plump or succulent appearance.;$20
-6;Carnivorous Plant;Planta;iceare.jpg;Carnivorous plants are native to bogs and similar nutrient-poor habitats. As a consequence, the plants live in conditions that are constantly damp.;$20
-7;Dahlia;Planta;iceno.jpg;"There’s no need to water the soil until the dahlia plants appear; in fact, overwatering can cause tubers to rot.";$20
-8;Fern;Planta;fern.jpg;Ferns require lots of shade and ambient (rather than direct) sunlight.;$20
-9;Herbaseous;Planta;herbaseous.jpg;"A perennial plant will live for more than two growing seasons; a true herbaceous perennial will completely die back in the winter, while its roots remain persistent, with clumps of stems or buds at or below ground level.";$20
-10;Ice Plant;Planta;iceplant.jpg;Hardy ice plant (Delosperma) is a succulent, perennial ground cover with daisy-like flowers.;$20
+1,Abelia,Plant,abelia.jpg,"Abelia looks best when allowed to retain its natural shape and size.",20
+2,Acalypha,Plant,acalypha.jpg,"Acalypha is a large genus of about 430 species of shrubs, trees, and annuals from tropical and subtropical regions.",20
+3,Basil,Plant,basil.jpg,"Pinch off the central stem when plants are 4 to 6 inches tall to encourage branching.",20
+4,Begonia,Plant,begonia.jpg,"Tuberous begonias will naturally die back each year.",20
+5,Cactus,Plant,cactus.jpg,"Cacti are low maintenance, water wise plants that store water in their leaves, stems or roots, creating a plump or succulent appearance.",20
+6,Carnivorous Plant,Plant,carnivorous.jpg,"Carnivorous plants are native to bogs and similar nutrient-poor habitats. As a consequence, the plants live in conditions that are constantly damp.",20
+7,Dahlia,Plant,iceno.jpg,"There’s no need to water the soil until the dahlia plants appear, in fact, overwatering can cause tubers to rot.",20
+8,Fern,Plant,fern.jpg,"Ferns require lots of shade and ambient (rather than direct) sunlight.",20
+9,Herbaseous,Plant,herbaseous.jpg,"A perennial plant will live for more than two growing seasons, a true herbaceous perennial will completely die back in the winter, while its roots remain persistent, with clumps of stems or buds at or below ground level.",20
+10,Ice Plant,Plant,iceplant.jpg,"Hardy ice plant (Delosperma) is a succulent, perennial ground cover with daisy-like flowers.",20
