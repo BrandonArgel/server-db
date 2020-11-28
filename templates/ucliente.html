@@ -2,8 +2,8 @@
 {% block titulo %} Uclientes {% endblock %}
 {% block contenido %}
 <header>
-  <nav id="navbar-cliente" class="navbar brand-plants navbar-expand-lg navbar-light">
-    <div class="btn-nombre navbar-cliente">
+  <nav class="navbar brand-plants navbar-expand-lg navbar-light">
+    <div class="btn-nombre">
       &nbsp;&nbsp; <a class="navbar-brand" href="#"><em class="fab fa-pagelines"></em>&nbsp;&nbsp;Brand Plants</a>
     </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -16,21 +16,17 @@
           <a class="btn-home nav-link" href="/usuario"><em class="fas fa-home"></em>&nbsp;Home&nbsp;&nbsp;<span
               class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <a class="btn-tienda nav-link" href="/tienda" id="btn_tienda"><em
-              class="fas fa-address-card"></em>&nbsp;&nbsp;Tienda&nbsp;&nbsp;</a>
-        </li>
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Operaciones
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="/sCliente">Clientes</a>
-              <a class="dropdown-item" href="/sProducto">Productos</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
+          <a class="nav-link dropdown-toggle btn-operaciones" href="#" id="navbarDropdown" role="button"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><em
+              class="fas fa-tools"></em>&nbsp;&nbsp;Operaciones</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/sCliente">Clientes&nbsp;&nbsp;<em class="fas fa-users"></em></a>
+            <a class="dropdown-item" href="/sProducto">Productos&nbsp;&nbsp;<em class="fas fa-store"></em></a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
         <li class="nav-item">
           <a class="btn-logout nav-link" href="/logout">&nbsp;<em
               class="fas fa-sign-out-alt"></em>&nbsp;{{session['nombreu']}}</a>
@@ -41,34 +37,157 @@
 
   <div class="contenedor">
     <div class="titulos">
-        <h1 class="nombre">Brand Plants <span>Plants Brand</span></h1>
-        <h3 class="eslogan">Las plantas más bonitas de la ciudad</h3>
+      <h1 class="nombre">Brand Plants <span>Plants Brand</span></h1>
+      <h3 class="eslogan">Las plantas más bonitas de la ciudad</h3>
     </div>
-</div>
+  </div>
 </header>
+<section class="container"><br />
+  <h3 style="float: left; margin-right: 20px;">Clientes</h3>
+  <button type="button" class="btn btn-primary" data-toggle="modal"
+    data-target="#insertar">
+    <i class="fas fa-user-plus"></i>
+  </button>
+  {% with mensajes = get_flashed_messages() %}
+  {% if mensajes %}
+  {% for msj in mensajes %}
+  <div class="alert alert-info" role="alert">
+    {{ msj }}
+  </div>
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Correo</th>
+        <th scope="col">&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for c in clientes %}
+      <tr>
+        <th scope="row">{{c.idcliente}}</th>
+        <td>{{c.nombrec}}</td>
+        <td>{{c.correoc}}</td>
+        <td><button type="button" class="btn btn-primary btn-outline-light" data-toggle="modal"
+            data-target="#editar{{c.idcliente}}">
+            <em class="fas fa-user-edit"></em>
+          </button>
 
-<section class="container">
-    <h3>Clientes</h3>
-    <table class="table table-hover">
-        <thead>
-          <tr>
-            <th scope="col">id</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Correo</th>
-            <th scope="col">&nbsp;</th>
-          </tr>
-        </thead>
-        <tbody>
-            {% for c in clientes %}
-          <tr>
-            <th scope="row">{{c.idcliente}}</th>
-            <td>{{c.nombrec}}</td>
-            <td>{{c.correoc}}</td>
-            <td><em class="fas fa-user-edit"></em>&nbsp;</td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#eliminar{{c.idcliente}}">
+            <em class="fas fa-user-times"></em></td>
+        </button>
+      </tr>
+
+      <!-- Modal para editar -->
+      <div class="modal fade" id="editar{{c.idcliente}}" data-backdrop="static" data-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <form action="/uCliente" method="POST">
+              <input type="hidden" name="idcliente" value="{{c.idcliente}}">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Registro</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="form-group">
+                  <label for="nombrec">Nombre:</label>
+                  <input type="text" name="nombrec" value="{{c.nombrec}}" placeholder="Nombre completo"
+                    class="form-control">
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="correoc">Correo:</label>
+                    <input type="email" name="correoc" value="{{c.correoc}}" placeholder="Correo Electrónico"
+                      class="form-control">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="clavec">Contraseña:</label>
+                    <input type="password" class="form-control" name="clavec" value="{{c.clavec}}"
+                      placeholder="Contraseña">
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Actualizar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal para eliminar -->
+      <div class="modal fade" id="eliminar{{c.idcliente}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Eliminar Registro</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form action="/dCliente" method="POST">
+              <input type="hidden" name="idcliente" value="{{c.idcliente}}">
+              <div class="modal-body">
+                <p>¿Seguro que desea eliminar al cliente {{c.nombrec}}?</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Eliminar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+      <!-- Modal de agregar-->
+      <div class="modal fade" id="insertar" data-backdrop="static" data-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <form action="/iCliente" method="POST">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Registro</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="form-group">
+                  <label for="nombrec">Nombre:</label>
+                  <input type="text" name="nombrec" placeholder="Nombre completo" class="form-control">
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="correoc">Correo:</label>
+                    <input type="email" name="correoc" placeholder="Correo Electrónico" class="form-control">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="clavec">Contraseña:</label>
+                    <input type="password" class="form-control" name="clavec" placeholder="Contraseña">
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Agregar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </tbody>
+  </table>
 </section>
 
 {% endblock %}

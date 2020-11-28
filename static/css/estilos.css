@@ -52,8 +52,10 @@ header .contenedor
 
 .brand-plants .navbar-brand {color: greenyellow;}
 .brand-plants .navbar-brand:hover {color: rgba(172, 255, 47, 0.699);}
+.brand-plants .navbar-brand:visited {color: greenyellow;}
 .brand-plants .navbar-nav .nav-link {color: greenyellow;}
 .brand-plants .navbar-nav .nav-link:hover {color: rgba(172, 255, 47, 0.699);}
+.brand-plants .navbar-nav .nav-link:visited {color: greenyellow;}
 
 header .titulos
 {
@@ -109,7 +111,7 @@ header .titulos h3
     padding: 40px;
     width: 50%;
     position: relative;
-    top: 200px;
+    top: 400px;
     z-index: 1;
     float: right;
     box-shadow: 0px 0px 10px 3px rgba(0,0,0,.75);
@@ -239,3 +241,15 @@ header .ingresar
 {
     background-color: #00000000;
 }
+
+.dropdown-menu
+{
+    background-color: #000000cc;
+}
+
+.dropdown-menu .dropdown-item{color: greenyellow;}
+.dropdown-menu .dropdown-item:hover{background-color: black;}
+.dropdown-menu .dropdown-item:visited{color: greenyellow;}
+
+td a{color: black;}
+td a:hover{color: red;}

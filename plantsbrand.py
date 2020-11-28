@@ -60,6 +60,17 @@ def logout():
 def cliente():
     return render_template('cliente.html')
 
+@brandplantsApp.route('/usuario', methods = ['GET', 'POST'])
+def usuario():
+    return render_template('usuario.html')
+
+@brandplantsApp.route('/sProducto', methods = ['GET', 'POST'])
+def productos():
+    selproducto = mysql.connection.cursor()
+    selproducto.execute("SELECT * FROM producto")
+    p = selproducto.fetchall()
+    return render_template('productos.html', productos = p)
+
 @brandplantsApp.route('/tienda', methods = ['GET', 'POST'])
 def tienda():
     selproducto = mysql.connection.cursor()
@@ -86,8 +97,44 @@ def sCliente():
     selCliente.execute("SELECT * FROM cliente")
     c = selCliente.fetchall()
     return render_template('ucliente.html', clientes = c)
+    
+@brandplantsApp.route('/uCliente', methods =['GET', 'POST'])
+def uCliente():
+    idcliente = request.form['idcliente']
+    if request.method == 'POST':
+        nombrec = request.form['nombrec']
+        correoc = request.form['correoc']
+        clavec = request.form['clavec'].encode('utf-8')
+        clavecifrada = bcrypt.hashpw(clavec, bcrypt.gensalt())
+        actcliente = mysql.connection.cursor()
+        actcliente.execute("UPDATE cliente SET nombrec=%s,correoc=%s,clavec=%s WHERE idcliente=%s", (nombrec,correoc, clavecifrada, idcliente))
+        mysql.connection.commit()
+        flash('Se ha actualizado el registro correctamente')
+        return redirect(url_for('sCliente'))
+
+@brandplantsApp.route('/dCliente', methods =['GET', 'POST'])
+def dCliente():
+    idcliente = request.form['idcliente']
+    delcliente = mysql.connection.cursor()
+    delcliente.execute("DELETE FROM cliente WHERE idcliente=%s", (idcliente))
+    mysql.connection.commit()
+    flash('Se ha eliminado el registro correctamente')
+    return redirect(url_for('sCliente'))
+
+@brandplantsApp.route('/iCliente', methods = ['GET', 'POST'])
+def iCliente():
+    if request.method == 'POST':
+        nombrec = request.form['nombrec']
+        correoc = request.form['correoc']
+        clavec = request.form['clavec'].encode('utf-8')
+        clavecifrada = bcrypt.hashpw(clavec, bcrypt.gensalt())
+        regcliente = mysql.connection.cursor()
+        regcliente.execute("INSERT INTO cliente (nombrec, correoc, clavec) VALUES (%s, %s, %s)", (nombrec, correoc, clavecifrada))
+        mysql.connection.commit()
+        flash('Cliente agregado')
+    return redirect(url_for('sCliente'))
 
 if __name__ == '__main__':
     brandplantsApp.secret_key = 'aaaaeeee'
-    brandplantsApp.run(port = 3000,debug = True)
+    brandplantsApp.run(port = 3000, debug = True)
 

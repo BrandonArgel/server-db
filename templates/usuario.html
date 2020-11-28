@@ -2,8 +2,8 @@
 {% block titulo %} Bienvenidos a Plants Brand {% endblock %}
 {% block contenido %}
 <header>
-  <nav id="navbar-cliente" class="navbar brand-plants navbar-expand-lg navbar-light">
-    <div class="btn-nombre navbar-cliente">
+  <nav class="navbar brand-plants navbar-expand-lg navbar-light">
+    <div class="btn-nombre">
       &nbsp;&nbsp; <a class="navbar-brand" href="#"><em class="fab fa-pagelines"></em>&nbsp;&nbsp;Brand Plants</a>
     </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -15,16 +15,12 @@
         <li class="nav-item">
           <a class="btn-home nav-link" href="/usuario"><em class="fas fa-home"></em>&nbsp;Home&nbsp;&nbsp;<span
               class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="btn-tienda nav-link" href="/tienda" id="btn_tienda"><em
-              class="fas fa-address-card"></em>&nbsp;&nbsp;Tienda&nbsp;&nbsp;</a>
-        </li>
+          </li>
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle btn-operaciones" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Operaciones</a>
+            <a class="nav-link dropdown-toggle btn-operaciones" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><em class="fas fa-tools"></em>&nbsp;&nbsp;Operaciones</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="/sCliente">Clientes</a>
-              <a class="dropdown-item" href="/sProducto">Productos</a>
+              <a class="dropdown-item" href="/sCliente">Clientes&nbsp;&nbsp;<em class="fas fa-users"></em></a>
+              <a class="dropdown-item" href="/sProducto">Productos&nbsp;&nbsp;<em class="fas fa-store"></em></a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">Something else here</a>
             </div>
