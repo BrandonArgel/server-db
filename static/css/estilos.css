@@ -253,3 +253,15 @@ header .ingresar
 
 td a{color: black;}
 td a:hover{color: red;}
+
+#botoncitoe
+{
+    margin-left: 50px;
+}
+
+#botoncitod
+{
+    margin-left: 100px;
+    position: relative;
+    top: -38px;
+}

@@ -1,51 +1,215 @@
 {% extends 'layout.html' %}
-{% block titulo %} Tienda {% endblock %}
+{% block titulo %} Productos {% endblock %}
 {% block contenido %}
 <header>
-    <nav id="navbar" class="navbar brand-plants navbar-expand-lg navbar-light">
-        <div class="btn-nombre navbar">
-            &nbsp;&nbsp; <a class="navbar-brand" href="#" ><em class="fab fa-pagelines"></em>&nbsp;&nbsp;Brand Plants</a>
-        </div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="btn-home nav-link" href="/usuario"><em class="fas fa-home"></em>&nbsp;Home&nbsp;&nbsp;<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle btn-operaciones" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><em class="fas fa-tools"></em>&nbsp;&nbsp;Operaciones</a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/sCliente">Clientes&nbsp;&nbsp;<em class="fas fa-users"></em></a>
-                    <a class="dropdown-item" href="/sProducto">Productos&nbsp;&nbsp;<em class="fas fa-store"></em></a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </div>
-                </li>
-                <li class="nav-item">
-                    <a class="btn-logout nav-link" href="/logout" >&nbsp;<em class="fas fa-sign-out-alt"></em>&nbsp;{{session['nombreu']}}</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+  <nav class="navbar brand-plants navbar-expand-lg navbar-light">
+    <div class="btn-nombre">
+      &nbsp;&nbsp; <a class="navbar-brand" href="#"><em class="fab fa-pagelines"></em>&nbsp;&nbsp;Brand Plants</a>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="btn-home nav-link" href="/usuario"><em class="fas fa-home"></em>&nbsp;Home&nbsp;&nbsp;<span
+              class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle btn-operaciones" href="#" id="navbarDropdown" role="button"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><em
+              class="fas fa-tools"></em>&nbsp;&nbsp;Operaciones</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/sCliente">Clientes&nbsp;&nbsp;<em class="fas fa-users"></em></a>
+            <a class="dropdown-item" href="/sProducto">Productos&nbsp;&nbsp;<em class="fas fa-store"></em></a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="btn-logout nav-link" href="/logout">&nbsp;<em
+              class="fas fa-sign-out-alt"></em>&nbsp;{{session['nombreu']}}</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="contenedor">
+    <div class="titulos">
+      <h1 class="nombre">Brand Plants <span>Plants Brand</span></h1>
+      <h3 class="eslogan">Las plantas más bonitas de la ciudad</h3>
+    </div>
+  </div>
 </header>
-<section><br />
-<div class="row row-cols-1 row-cols-md-3">
-    {% for p in productos %}
-    <div class="col mb-4">
-      <div class="card h-100" style="margin-left: 10px; margin-right: 10px;">
-        <img src="static/img/{{p.imagenp}}" class="card-img-top" alt="productos" style="border: 2px solid black;">
-        <div class="card-body" style="background-color: black; color: greenyellow;">
-          <h5 class="card-title">{{p.nombrep}}</h5>  
-          <h6 class="card-title">{{p.tipop}}</h6>
-          <p class="card-text">{{p.descripcionp}}</p>
-          <p class="card-text"><strong>${{p.preciop}}</strong></p>
+<section class="container"><br />
+  <h3 style="float: left; margin-right: 20px;">Plantas</h3>
+  <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#insertarp">
+    <i class="fas fa-user-plus"></i>
+  </button>
+  {% with mensajes = get_flashed_messages() %}
+  {% if mensajes %}
+  {% for msj in mensajes %}
+  <div class="alert alert-info" role="alert">
+    {{ msj }}
+  </div>
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Product</th>
+        <th scope="col">Name</th>
+        <th scope="col">Type</th>
+        <th scope="col">Description</th>
+        <th scope="col">Price</th>
+        <th scope="col">&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for p in productos %}
+      <tr>
+        <th scope="row"><img src="static/img/{{p.imagenp}}" class="card-img-top" alt="Planta"></th>
+        <td>{{p.nombrep}}</td>
+        <td>{{p.tipop}}</td>
+        <td >{{p.descripcionp}}</td>
+        <td>{{p.preciop}}</td>
+        <td><button type="button" class="btn btn-primary btn-outline-light" data-toggle="modal"
+            data-target="#editar{{p.idproducto}}" id="botoncitoe">
+            <em class="fas fa-user-edit"></em>
+          </button>
+
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#eliminar{{p.idproducto}}" id="botoncitod">
+            <em class="fas fa-user-times"></em></td>
+        </button>
+      </tr>
+
+      <!-- Modal para editar -->
+      <div class="modal fade" id="editar{{p.idproducto}}" data-backdrop="static" data-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <form action="/uProducto" method="POST">
+              <input type="hidden" name="idproducto" value="{{p.idproducto}}">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Producto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="imagenp">Image:</label>
+                    <input type="text" name="imagenp" value="{{p.imagenp}}" placeholder="Imagen.jpg"
+                      class="form-control">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="nombrep">Name:</label>
+                    <input type="text" name="nombrep" value="{{p.nombrep}}" placeholder="Nombre" class="form-control">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="tipop">Type:</label>
+                    <input type="text" class="form-control" name="tipop" value="{{p.tipop}}" placeholder="Planta">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="preciop">Precio:</label>
+                    <input type="text" class="form-control" name="preciop" value="{{p.preciop}}" placeholder="$100">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="descripcionp">Description:</label>
+                  <input type="text" name="descripcionp" value="{{p.descripcionp}}"
+                    placeholder="Es una planta muy bonita" class="form-control">
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Actualizar</button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
-    {% endfor %}
-  </div>
+
+      <!-- Modal para eliminar -->
+      <div class="modal fade" id="eliminar{{p.idproducto}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Eliminar Producto</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form action="/dProducto" method="POST">
+              <input type="hidden" name="idproducto" value="{{p.idproducto}}">
+              <div class="modal-body">
+                <p>¿Seguro que desea eliminar al producto {{p.nombrep}}?</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Eliminar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+      <!-- Modal de agregar-->
+      <div class="modal fade" id="insertarp" data-backdrop="static" data-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <form action="/iProducto" method="POST">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Nuevo Producto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="imagenp">Image:</label>
+                    <input type="text" name="imagenp" placeholder="Imagen.jpg" class="form-control">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="nombrep">Name:</label>
+                    <input type="text" name="nombrep" placeholder="Nombre" class="form-control">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="tipop">Type:</label>
+                    <input type="text" class="form-control" name="tipop" placeholder="Planta">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="preciop">Precio:</label>
+                    <input type="text" class="form-control" name="preciop" placeholder="$100">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="descripcionp">Description:</label>
+                  <input type="text" name="descripcionp" placeholder="Es una planta muy bonita" class="form-control">
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Agregar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </tbody>
+  </table>
 </section>
-  {% endblock %}
+
+{% endblock %}

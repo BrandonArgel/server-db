@@ -64,13 +64,6 @@ def cliente():
 def usuario():
     return render_template('usuario.html')
 
-@brandplantsApp.route('/sProducto', methods = ['GET', 'POST'])
-def productos():
-    selproducto = mysql.connection.cursor()
-    selproducto.execute("SELECT * FROM producto")
-    p = selproducto.fetchall()
-    return render_template('productos.html', productos = p)
-
 @brandplantsApp.route('/tienda', methods = ['GET', 'POST'])
 def tienda():
     selproducto = mysql.connection.cursor()
@@ -116,7 +109,7 @@ def uCliente():
 def dCliente():
     idcliente = request.form['idcliente']
     delcliente = mysql.connection.cursor()
-    delcliente.execute("DELETE FROM cliente WHERE idcliente=%s", (idcliente))
+    delcliente.execute("DELETE FROM cliente WHERE idcliente=%s", (idcliente,))
     mysql.connection.commit()
     flash('Se ha eliminado el registro correctamente')
     return redirect(url_for('sCliente'))
@@ -133,6 +126,52 @@ def iCliente():
         mysql.connection.commit()
         flash('Cliente agregado')
     return redirect(url_for('sCliente'))
+
+# Productos
+@brandplantsApp.route('/sProducto', methods = ['GET', 'POST'])
+def productos():
+    selproducto = mysql.connection.cursor()
+    selproducto.execute("SELECT * FROM producto")
+    p = selproducto.fetchall()
+    return render_template('productos.html', productos = p)
+
+@brandplantsApp.route('/uProducto', methods =['GET', 'POST'])
+def uProducto():
+    idproducto = request.form['idproducto']
+    if request.method == 'POST':
+        nombrep = request.form['nombrep']
+        tipop = request.form['tipop']
+        imagenp = request.form['imagenp']
+        descripcionp = request.form['descripcionp']
+        preciop = request.form['preciop']
+        actproducto = mysql.connection.cursor()
+        actproducto.execute("UPDATE producto SET nombrep=%s,tipop=%s,imagenp=%s,descripcionp=%s,preciop=%s WHERE idproducto=%s", (nombrep, tipop, imagenp,descripcionp,preciop, idproducto))
+        mysql.connection.commit()
+        flash('Se ha actualizado el registro correctamente')
+        return redirect(url_for('productos'))
+
+@brandplantsApp.route('/dProducto', methods =['GET', 'POST'])
+def dProducto():
+    idproducto = request.form['idproducto']
+    delproducto = mysql.connection.cursor()
+    delproducto.execute("DELETE FROM producto WHERE idproducto=%s", (idproducto,))
+    mysql.connection.commit()
+    flash('Se ha eliminado el producto correctamente')
+    return redirect(url_for('productos'))
+
+@brandplantsApp.route('/iProducto', methods = ['GET', 'POST'])
+def iProducto():
+    if request.method == 'POST':
+        nombrep = request.form['nombrep']
+        tipop = request.form['tipop']
+        imagenp = request.form['imagenp']
+        descripcionp = request.form['descripcionp']
+        preciop = request.form['preciop']
+        actproducto = mysql.connection.cursor()
+        actproducto.execute("INSERT INTO producto (nombrep, tipop, imagenp, descripcionp, preciop) VALUES(%s, %s, %s, %s, %s)", (nombrep, tipop, imagenp, descripcionp, preciop))
+        mysql.connection.commit()
+        flash('Se ha agregado el producto correctamente')
+        return redirect(url_for('productos'))
 
 if __name__ == '__main__':
     brandplantsApp.secret_key = 'aaaaeeee'

@@ -44,9 +44,9 @@
 </header>
 <section class="container"><br />
   <h3 style="float: left; margin-right: 20px;">Clientes</h3>
-  <button type="button" class="btn btn-primary" data-toggle="modal"
+  <button type="button" class="btn btn-dark" data-toggle="modal"
     data-target="#insertar">
-    <i class="fas fa-user-plus"></i>
+    <em class="fas fa-user-plus"></em>
   </button>
   {% with mensajes = get_flashed_messages() %}
   {% if mensajes %}
@@ -99,8 +99,7 @@
               <div class="modal-body">
                 <div class="form-group">
                   <label for="nombrec">Nombre:</label>
-                  <input type="text" name="nombrec" value="{{c.nombrec}}" placeholder="Nombre completo"
-                    class="form-control">
+                  <input type="text" name="nombrec" value="{{c.nombrec}}" placeholder="Nombre completo" class="form-control">
                 </div>
                 <div class="form-row">
                   <div class="form-group col-md-6">
