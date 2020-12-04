@@ -265,3 +265,17 @@ td a:hover{color: red;}
     position: relative;
     top: -38px;
 }
+
+.modal-content
+{
+    background-color: #000000;
+    color: greenyellow;
+    border-radius:10px;
+}
+
+.texto
+{
+    background-color: white;
+    color: greenyellow;
+    border-radius: 7px;
+}

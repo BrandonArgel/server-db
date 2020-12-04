@@ -37,7 +37,7 @@
                     <div class="container">
                         <div class="ingresar">
                             <div class="card">
-                                <div class="card-body ">
+                                <div class="card-body">
                                     <h3><strong>Iniciar sesión</strong></h3>
                                     <p>¡Únete a nuestra gran comunidad!</p>
                                     {% with mensajes = get_flashed_messages() %}
@@ -96,16 +96,16 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="nombrec">Nombre:</label>
-                        <input type="text" name="nombrec" placeholder="Nombre completo" class="form-control">
+                        <input class="texto" type="text" name="nombrec" placeholder="Nombre completo" class="form-control">
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="correoc">Correo:</label>
-                            <input type="email" name="correoc" placeholder="Correo Electrónico" class="form-control">
+                            <input class="texto" type="email" name="correoc" placeholder="Correo Electrónico" class="form-control">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="clavec">Contraseña:</label>
-                            <input type="password" class="form-control" name="clavec" placeholder="Contraseña">
+                            <input class="texto" type="password" class="form-control" name="clavec" placeholder="Contraseña">
                         </div>
                     </div>
                 </div>
